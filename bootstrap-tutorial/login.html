@@ -31,16 +31,91 @@
             position: relative;
             z-index: 1;
         }
+        /* Transparent Navbar */
+        .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: transparent;
+        color: white;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+        }
+
+        .navbar h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        }
+
+        .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+        }
+
+        .nav-links li a {
+        position: relative;
+        color: inherit;
+        text-decoration: none;
+        font-weight: 500;
+        }
+
+        .nav-links li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background-color: whitesmoke;
+        transition: width 0.3s ease-in-out;
+        }
+
+        .nav-links li:nth-child(2) a::after {
+        width: 100%;
+        background-color: #98465f;
+        }
+
+        .nav-links li a:hover::after {
+        width: 100%;
+        }
+
+        /* Vanta canvas optimization */
+        #vanta-hero canvas {
+        image-rendering: pixelated;
+        }
+
+        /* Remove extra space between sections */
+        #vanta-hero {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        }
     </style>
 </head>
 
 <body>
+    <div id="vanta-hero">
+        <!-- Transparent Navbar -->
+        <div class="navbar">
+          <p style="font-size: 25px;">Aurora</p>
+          <ul class="nav-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./login.html">Log In</a></li>
+            <li><a href="./signup.html">Sign Up</a></li>
+          </ul>
+        </div>
+    </div>
     <div class="vanta-wrapper">
         <div id="vanta-bg"></div>
         <div class="container d-flex justify-content-center align-items-center">
             <div class="row border rounded-5 p-3 bg-white shadow box-area">
                 <!-- Left Box -->
-                <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
+                <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #98465f;">
                     <div class="featured-image mb-3">
                         <img src="images/6333040.jpg" class="img-fluid" style="width: 250px; border-radius: 12px;">
                     </div>
