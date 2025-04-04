@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transparent Navbar with Vanta.js</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Transparent Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: transparent;
+      color: white;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      position: relative;
+      color: inherit;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background-color: whitesmoke;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%);
+      color: white;
+      text-align: left;
+      z-index: 1;
+      padding: 1rem;
+      max-width: 500px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0 0 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      background-color: #98465f;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .hero button:hover {
+      background-color: #b25f77;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero-content {
+        left: 2rem;
+        right: 2rem;
+        max-width: unset;
+      }
+    }
+
+    /* Vanta canvas optimization */
+    #vanta-hero canvas {
+      image-rendering: pixelated;
+    }
+
+    /* Remove extra space between sections */
+    #vanta-hero {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    footer {
+      margin-top: 0 !important;
+      padding-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <div class="hero" id="vanta-hero">
+    <!-- Transparent Navbar -->
+    <div class="navbar">
+      <p style="font-size: 25px;">Aurora</p>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Log in</a></li>
+        <li><a href="#">Sign in</a></li>
+      </ul>
+    </div>
+    <div class="hero-content">
+      <h1>Generative AI solution to Incident Response.</h1>
+      <p>Smoother, smarter and Faster Ticket Resolutions.</p>
+      <button>Get Started</button>
+    </div>
+  </div>
+
+  <!-- Footer Tab -->
+  <footer class="bg-dark text-white pt-5 pb-4 mt-0">
+    <div class="container text-md-left">
+      <div class="row text-md-left">
+        <!-- About Column -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold">YourSite</h5>
+          <p>
+            A short description about your site or company goes here. This section helps users understand your brand.
+          </p>
+        </div>
+        <!-- Links Column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold">Links</h5>
+          <p><a href="#" class="text-white" style="text-decoration: none;">Home</a></p>
+          <p><a href="#" class="text-white" style="text-decoration: none;">About</a></p>
+          <p><a href="#" class="text-white" style="text-decoration: none;">Services</a></p>
+          <p><a href="#" class="text-white" style="text-decoration: none;">Contact</a></p>
+        </div>
+        <!-- Contact Column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold">Contact</h5>
+          <p><i class="bi bi-house-door-fill me-2"></i> Your Address, City, Country</p>
+          <p><i class="bi bi-envelope-fill me-2"></i> email@example.com</p>
+          <p><i class="bi bi-phone-fill me-2"></i> +123 456 7890</p>
+        </div>
+        <!-- Social Column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold">Follow Us</h5>
+          <a class="btn btn-outline-light btn-floating m-1" href="#"><i class="bi bi-facebook"></i></a>
+          <a class="btn btn-outline-light btn-floating m-1" href="#"><i class="bi bi-twitter"></i></a>
+          <a class="btn btn-outline-light btn-floating m-1" href="#"><i class="bi bi-linkedin"></i></a>
+          <a class="btn btn-outline-light btn-floating m-1" href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+      <!-- Footer Bottom -->
+      <div class="row mt-3">
+        <div class="col-md-12 text-center">
+          <p class="text-white-50">&copy; 2025 YourSite. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanta + p5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>
+  <!-- Vanta Init -->
+  <script>
+    if (window.innerWidth > 768) {
+      VANTA.TRUNK({
+        el: "#vanta-hero",
+        mouseControls: false,
+        touchControls: false,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        spacing: 2,
+        chaos: 4,
+        backgroundColor: 0x222426,
+        color: 0x98465f
+      });
+    }
+  </script>
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 100 });
+  </script>
+
+</body>
+
+</html>
