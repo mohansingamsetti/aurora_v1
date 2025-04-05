@@ -2,11 +2,25 @@
 	"name": "bootstrap-tutorial",
 	"version": "1.0.0",
 	"main": "index.js",
+	"scripts": {
+		"start": "node server.js",
+		"dev": "nodemon server.js",
+		"setup-db": "node dynamodb-setup.js"
+	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"description": "",
 	"dependencies": {
-		"bootstrap": "^5.3.3"
+		"aws-sdk": "^2.1692.0",
+		"bcryptjs": "^3.0.2",
+		"body-parser": "^2.2.0",
+		"bootstrap": "^5.3.3",
+		"dotenv": "^16.4.7",
+		"express": "^5.1.0",
+		"jsonwebtoken": "^9.0.2"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.9"
 	}
 }
