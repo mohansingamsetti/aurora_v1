@@ -148,16 +148,9 @@ router.post('/login', async (req, res) => {
 			.eq('id', data.user.id)
 			.single();
 
-		// Return token and user data
-		res.json({
-			session: data.session,
-			user: {
-				id: data.user.id,
-				email: data.user.email,
-				role: userData?.role || 'user',
-				username: userData?.username || data.user.email.split('@')[0],
-			},
-		});
+		res.set('authorization', data.session.access_token);
+
+		res.redirect('/temp');
 	} catch (error) {
 		console.error('Login error:', error);
 		res.status(500).json({ message: 'Server error during login' });
@@ -376,11 +369,9 @@ router.delete(
 
 			if (authDeleteError) {
 				console.error('Error deleting auth user:', authDeleteError);
-				return res
-					.status(500)
-					.json({
-						message: 'User deleted from database but not from auth system',
-					});
+				return res.status(500).json({
+					message: 'User deleted from database but not from auth system',
+				});
 			}
 
 			res.json({ message: 'User deleted successfully' });

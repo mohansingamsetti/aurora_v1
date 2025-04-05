@@ -56,6 +56,10 @@ const userRoutes = require('./routes');
 
 app.use('/api/user', userRoutes);
 
+app.use('/temp', (req, res) => {
+	res.sendFile(path.join(__dirname, 'ui', 'temp.html'));
+});
+
 // Catch-all route to serve the UI's index.html
 app.get('/', (_, res) => {
 	res.sendFile(path.join(__dirname, 'ui', 'index.html'));
