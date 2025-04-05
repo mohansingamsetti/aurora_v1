@@ -209,7 +209,7 @@ app.get(
 );
 
 // Catch-all route to serve the UI's index.html
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
